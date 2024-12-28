@@ -74,6 +74,10 @@ button:active {
     color: var(--primary);
 }
 
+.me {
+    color: var(--secondary);
+}
+
 .message__text {
     
 }
