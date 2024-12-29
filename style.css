@@ -37,6 +37,10 @@ input[type="text"]:focus {
     border-color: var(--primary);
 }
 
+input[type="text"]:focus {
+    
+}
+
 button {
     padding-inline: 15px;
     border-radius: 8px;

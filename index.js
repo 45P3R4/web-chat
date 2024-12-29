@@ -3,7 +3,8 @@ let body = document.getElementById("container");
 let number = 1;
 
 if(localStorage.getItem('username') == null) {
-    let username = prompt('username: ', username);
+    let username;
+    username = prompt('username: ', username);
     localStorage.setItem('username', username);
 }
 
