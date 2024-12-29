@@ -1,9 +1,8 @@
 const url = 'https://dummyjson.com/comments/';
 let body = document.getElementById("container");
-let number = 1;
 
 if(localStorage.getItem('username') == null) {
-    let username;
+    let username = 'default';
     username = prompt('username: ', username);
     localStorage.setItem('username', username);
 }
@@ -13,6 +12,7 @@ const messageB = document.getElementById('sendButton');
 const messageI = document.getElementById('messageText');
 messageB.onclick = sendMessage;
 
+let number = 1;
 setInterval(() => {
     getMessage(number);
     number++;
