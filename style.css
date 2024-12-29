@@ -8,6 +8,7 @@
     --accent: #c4f23d;
 
     --padding: 15px;
+    --input-hegiht: 100px;
 }
 
 body {
@@ -55,9 +56,13 @@ button:active {
 }
 
 #container {
-    margin: 30px auto;
+    margin-inline:  auto;
     padding-inline: var(--padding);
+    padding-bottom: var(--input-hegiht);
+    padding-top: 15px;
     max-width: 800px;
+    /* height: calc(100vh - var(--input-hegiht)); */
+    height: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -87,7 +92,7 @@ button:active {
 }
 
 .input {
-    height: 100px;
+    height: var(--input-hegiht);
     width: calc(100vw - var(--padding)*2);
     position: fixed;
     bottom: 0;

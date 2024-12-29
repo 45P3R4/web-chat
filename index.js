@@ -21,7 +21,7 @@ function sendMessage() {
     let message = createMessage(localStorage.getItem('username'), messageI.value);
     message.children[1].setAttribute('class', 'message__author me');
     body.appendChild(message);
-    scrollIfNeedToMessage(message)
+    message.scrollIntoView({behavior: "smooth"});
 }
 
 async function getMessage(number) {
@@ -64,6 +64,6 @@ function createMessage(name, text) {
 }
 
 function scrollIfNeedToMessage(message) {
-    if(window.scrollY + window.innerHeight > document.body.scrollHeight - 200)
+    if(window.scrollY + window.innerHeight > document.body.scrollHeight - 100)
         message.scrollIntoView({behavior: "smooth"});
 }
