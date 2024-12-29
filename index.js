@@ -22,6 +22,7 @@ function sendMessage() {
     let message = createMessage(localStorage.getItem('username'), messageI.value);
     message.children[1].setAttribute('class', 'message__author me');
     body.appendChild(message);
+    messageI.value = null;
     message.scrollIntoView({behavior: "smooth"});
 }
 
