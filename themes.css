@@ -1,0 +1,44 @@
+html[data-theme=lavender] {
+    --text: #d4d2fc;
+    --background: #02010a;
+    --primary: #9685f7;
+    --primary-dark: #524886;
+    --secondary: #a2530b;
+    --accent: #c4f23d;
+  }
+
+html[data-theme=sand] {
+    --text: #f9f6e9;
+    --background: #0f0d04;
+    --primary: #e0d08c;
+    --primary-dark: #726a46;
+    --secondary: #4e7b21;
+    --accent: #64cd48;
+}
+
+html[data-theme=pink] {
+    --text: #f3dee2;
+    --background: #17060a;
+    --primary: #ea8ca0;
+    --primary-dark: #7a4853;
+    --secondary: #910f2b;
+    --accent: #f61948;
+  }
+
+  html[data-theme=green] {
+    --text: #dff1e1;
+    --background: #0a1d0c;
+    --primary: #8de295;
+    --primary-dark: #4c7e51;
+    --secondary: #199024;
+    --accent: #28e839;
+  }
+
+  html[data-theme=old-pc] {
+    --text: #e4eaea;
+    --background: #0b0e0e;
+    --primary: #b3c3c4;
+    --primary-dark: #616a6b;
+    --secondary: #4a5061;
+    --accent: #737793;
+  }

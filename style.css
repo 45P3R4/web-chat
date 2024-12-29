@@ -1,15 +1,9 @@
 :root
 {
-    --text: #d4d2fc;
-    --background: #02010a;
-    --primary: #9685f7;
-    --primary-dark: #524886;
-    --secondary: #a2530b;
-    --accent: #c4f23d;
-
     --padding: 15px;
     --input-hegiht: 100px;
 }
+
 
 body {
     margin: 0;
@@ -107,4 +101,10 @@ button:active {
     align-items: center;
     border-top: 1px solid var(--primary-dark);
     background-color: var(--background);
+}
+
+.theme-button {
+    position: fixed;
+    right: 15px;
+    top: 15px;
 }

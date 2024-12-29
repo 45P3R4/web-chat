@@ -7,7 +7,6 @@ if(localStorage.getItem('username') == null) {
     localStorage.setItem('username', username);
 }
 
-
 const messageB = document.getElementById('sendButton');
 const messageI = document.getElementById('messageText');
 messageB.onclick = sendMessage;
@@ -18,11 +17,25 @@ setInterval(() => {
     number++;
 }, 1000);
 
+
+const themes = [];
+themes.push('lavender', 'sand', 'pink', 'green', 'old-pc');
+let currentTheme = 0;
+const themeB = document.getElementById('themeButton');
+themeB.onclick = changeTheme;
+
+function changeTheme() {
+    currentTheme = currentTheme < themes.length-1 ? ++currentTheme : 0;
+    document.firstElementChild.setAttribute("data-theme", themes[currentTheme]);
+    localStorage.setItem('theme', themes[currentTheme]);
+}
+
+
 function sendMessage() {
     let message = createMessage(localStorage.getItem('username'), messageI.value);
     message.children[1].setAttribute('class', 'message__author me');
     body.appendChild(message);
-    messageI.value = null;
+    messageI.value = '';
     message.scrollIntoView({behavior: "smooth"});
 }
 
