@@ -1,4 +1,4 @@
-const url = 'https://dummyjson.com/comments/';
+const url = 'http://localhost:5000';
 let body = document.getElementById("container");
 
 if(localStorage.getItem('username') == null) {
@@ -11,33 +11,10 @@ const messageB = document.getElementById('sendButton');
 const messageI = document.getElementById('messageText');
 messageB.onclick = sendMessage;
 
-let number = 1;
-setInterval(() => {
-    getMessage(number);
-    number++;
-}, 1000);
-
-
-const themes = [];
-themes.push('lavender', 'sand', 'pink', 'green', 'old-pc');
-if(localStorage.getItem('theme') == null)
-    document.firstElementChild.setAttribute("data-theme", themes[0]);
-else
-    document.firstElementChild.setAttribute("data-theme", themes[localStorage.getItem('theme')]);
-
-let currentTheme = 0;
-const themeB = document.getElementById('themeButton');
-themeB.onclick = changeTheme;
-
-function changeTheme() {
-    currentTheme = currentTheme < themes.length-1 ? ++currentTheme : 0;
-    document.firstElementChild.setAttribute("data-theme", themes[currentTheme]);
-    localStorage.setItem('theme', currentTheme);
-}
-
+getMessage(0);
 
 function sendMessage() {
-    let message = createMessage(localStorage.getItem('username'), messageI.value);
+    let message = createDOMMessage(localStorage.getItem('username'), messageI.value);
     message.children[1].setAttribute('class', 'message__author me');
     body.appendChild(message);
     messageI.value = '';
@@ -45,16 +22,16 @@ function sendMessage() {
 }
 
 async function getMessage(number) {
-    let response = fetch(url + number)
+    fetch(url)
     .then(response => response.json())
-    .then(responseJson => {
-        let message = createMessage(responseJson.user.username, responseJson.body)
+    .then(data => {
+        let message = createDOMMessage(data[0].author, data[0].message)
         body.appendChild(message);
         scrollIfNeedToMessage(message)
     })
 }
 
-function createMessage(name, text) {
+function createDOMMessage(name, text) {
     const newMessage = document.createElement("div");
     const newAuthor = document.createElement("div");
     const newText = document.createElement("div");
