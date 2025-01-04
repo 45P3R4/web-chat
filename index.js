@@ -1,4 +1,4 @@
-const url = 'http://localhost:5000';
+const url = 'https://45p3r4.github.io/webchat-server:5000';
 let body = document.getElementById("container");
 
 if(localStorage.getItem('username') == null) {
@@ -11,23 +11,54 @@ const messageB = document.getElementById('sendButton');
 const messageI = document.getElementById('messageText');
 messageB.onclick = sendMessage;
 
-getMessage(0);
+for (i = 0; i < 10; i++) {
+    getMessage(i);
+}
+
+
+const postReqParams = {
+    method: 'post',
+    body: JSON.stringify({
+        author: 'database',
+        message: 'test message from server',
+        time: 0
+    })
+};
+
+
+let data = {author: "Meida", message: "Message"}
+
+
 
 function sendMessage() {
     let message = createDOMMessage(localStorage.getItem('username'), messageI.value);
     message.children[1].setAttribute('class', 'message__author me');
     body.appendChild(message);
-    messageI.value = '';
+
     message.scrollIntoView({behavior: "smooth"});
+
+    data.author = localStorage.getItem('username');
+    data.message = messageI.value;
+
+    fetch('https://45p3r4.github.io/webchat-server:5000', {
+        method: 'post',
+        body: JSON.stringify(data),
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
+
+    messageI.value = '';
 }
 
 async function getMessage(number) {
     fetch(url)
     .then(response => response.json())
     .then(data => {
-        let message = createDOMMessage(data[0].author, data[0].message)
+        let message = createDOMMessage(data[number].author, data[number].message)
         body.appendChild(message);
-        scrollIfNeedToMessage(message)
+        scrollIfNeedToMessage(message);
+        console.log(data[number]);
     })
 }
 
